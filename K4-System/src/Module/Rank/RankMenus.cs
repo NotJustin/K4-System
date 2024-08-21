@@ -40,17 +40,17 @@ namespace K4System
 
 							int pointsDifference = Math.Abs(rank.Point - playerData.Points);
 
-							player.PrintToChat($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.selected.title", rank.Color, rank.Name]}");
-							player.PrintToChat($" {plugin.Localizer["k4.ranks.selected.line1", playerCount, percentage]}");
+                            ModuleUtils.K4_PrintToChat(player, $" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.selected.title", rank.Color, rank.Name]}");
+                            ModuleUtils.K4_PrintToChat(player, $" {plugin.Localizer["k4.ranks.selected.line1", playerCount, percentage]}");
 
 							if (rank.Name == playerData.Rank.Name)
-								player.PrintToChat($" {plugin.Localizer["k4.ranks.selected.line2.current", rank.Point]}");
+								ModuleUtils.K4_PrintToChat(player, $" {plugin.Localizer["k4.ranks.selected.line2.current", rank.Point]}");
 							else
-								player.PrintToChat($" {plugin.Localizer[rank.Point > playerData.Rank.Point ? "k4.ranks.selected.line2" : "k4.ranks.selected.line2.passed", rank.Point == -1 ? "None" : rank.Point, pointsDifference]}");
+                                ModuleUtils.K4_PrintToChat(player, $" {plugin.Localizer[rank.Point > playerData.Rank.Point ? "k4.ranks.selected.line2" : "k4.ranks.selected.line2.passed", rank.Point == -1 ? "None" : rank.Point, pointsDifference]}");
 
 							if (rank.Permissions != null && rank.Permissions.Count > 0)
 							{
-								player.PrintToChat($" {plugin.Localizer["k4.ranks.selected.benefitline"]}");
+								ModuleUtils.K4_PrintToChat(player, $" {plugin.Localizer["k4.ranks.selected.benefitline"]}");
 
 								int permissionCount = 0;
 								string permissionLine = "";
@@ -62,14 +62,14 @@ namespace K4System
 
 									if (permissionCount % 3 == 0)
 									{
-										player.PrintToChat($" {permissionLine.TrimEnd(',', ' ')}");
+										ModuleUtils.K4_PrintToChat(player, $" {permissionLine.TrimEnd(',', ' ')}");
 										permissionLine = "";
 									}
 								}
 
 								if (!string.IsNullOrEmpty(permissionLine))
 								{
-									player.PrintToChat($" {permissionLine.TrimEnd(',', ' ')}");
+                                    ModuleUtils.K4_PrintToChat(player, $" {permissionLine.TrimEnd(',', ' ')}");
 								}
 							}
 						});
