@@ -145,7 +145,7 @@ namespace K4System
 
 				if (plugin.K4Players.Count(p => p.IsValid && p.IsPlayer) < Config.RankSettings.MinPlayers)
 				{
-					Server.PrintToChatAll($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.notenoughplayers", Config.RankSettings.MinPlayers]}");
+					ModuleUtils.K4_PrintToChatAll($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.notenoughplayers", Config.RankSettings.MinPlayers]}");
 				}
 
 				return HookResult.Continue;
@@ -204,7 +204,7 @@ namespace K4System
 
 							if (maxSwitches > 0)
 							{
-								Server.PrintToChatAll($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.rank.teamsbalanced"]}");
+								ModuleUtils.K4_PrintToChatAll($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.rank.teamsbalanced"]}");
 							}
 							else
 							{
@@ -244,7 +244,7 @@ namespace K4System
 				{
 					k4victim.KillStreak = (0, DateTime.Now);
 
-					if (k4attacker is null || !k4attacker.IsValid)
+					if (k4attacker is null || !k4attacker.IsValid || k4attacker == k4victim)
 					{
 						ModifyPlayerPoints(k4victim, Config.PointSettings.Suicide, "k4.phrases.suicide");
 					}

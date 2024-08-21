@@ -1,6 +1,7 @@
 namespace K4System
 {
-	using CounterStrikeSharp.API.Core;
+    using CounterStrikeSharp.API;
+    using CounterStrikeSharp.API.Core;
 	using CounterStrikeSharp.API.Modules.Commands;
 	using CounterStrikeSharp.API.Modules.Utils;
 	using K4System.Models;
@@ -55,5 +56,22 @@ namespace K4System
 			else
 				info.ReplyToCommand($" {plugin.Localizer["k4.adminlist.no-admins"]}");
 		}
+
+		public static void K4_PrintToChat(CCSPlayerController playerController, string message)
+		{
+			if (message.Trim().Equals(""))
+			{
+				return;
+			}
+			playerController.PrintToChat(message);
+		}
+		public static void K4_PrintToChatAll(string message)
+		{
+            if (message.Equals(""))
+            {
+                return;
+            }
+			Server.PrintToChatAll(message);
+        }
 	}
 }

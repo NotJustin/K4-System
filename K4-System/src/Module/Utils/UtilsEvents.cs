@@ -23,7 +23,7 @@ namespace K4System
 						Server.NextWorldUpdate(() =>
 						{
 							if (result != null)
-								Server.NextWorldUpdate(() => Server.PrintToChatAll(result));
+								Server.NextWorldUpdate(() => K4_PrintToChatAll(result));
 						});
 					});
 

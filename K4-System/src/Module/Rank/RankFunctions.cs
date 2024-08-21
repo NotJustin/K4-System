@@ -60,11 +60,11 @@ namespace K4System
                 {
                     if (playerData.RoundPoints > 0)
                     {
-                        k4player.Controller.PrintToChat($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.gain", playerData.Points, playerData.RoundPoints, plugin.Localizer["k4.phrases.roundsummary"]]}");
+                        ModuleUtils.K4_PrintToChat(k4player.Controller, $" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.gain", playerData.Points, playerData.RoundPoints, plugin.Localizer["k4.phrases.roundsummary"]]}");
                     }
                     else if (playerData.RoundPoints < 0)
                     {
-                        k4player.Controller.PrintToChat($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.loss", playerData.Points, Math.Abs(playerData.RoundPoints), plugin.Localizer["k4.phrases.roundsummary"]]}");
+                        ModuleUtils.K4_PrintToChat(k4player.Controller, $" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.loss", playerData.Points, Math.Abs(playerData.RoundPoints), plugin.Localizer["k4.phrases.roundsummary"]]}");
                     }
                 }
 
@@ -123,22 +123,22 @@ namespace K4System
                     {
                         if (extraInfo != null)
                         {
-                            k4player.Controller.PrintToChat($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.gain", playerData.Points, amount, plugin.Localizer[reason]]}{extraInfo}");
+                            ModuleUtils.K4_PrintToChat(k4player.Controller, $" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.gain", playerData.Points, amount, plugin.Localizer[reason]]}{extraInfo}");
                         }
                         else
                         {
-                            k4player.Controller.PrintToChat($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.gain", playerData.Points, amount, plugin.Localizer[reason]]}");
+                            ModuleUtils.K4_PrintToChat(k4player.Controller, $" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.gain", playerData.Points, amount, plugin.Localizer[reason]]}");
                         }
                     }
                     else if (amount < 0)
                     {
                         if (extraInfo != null)
                         {
-                            k4player.Controller.PrintToChat($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.loss", playerData.Points, Math.Abs(amount), plugin.Localizer[reason]]}{extraInfo}");
+                            ModuleUtils.K4_PrintToChat(k4player.Controller, $" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.loss", playerData.Points, Math.Abs(amount), plugin.Localizer[reason]]}{extraInfo}");
                         }
                         else
                         {
-                            k4player.Controller.PrintToChat($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.loss", playerData.Points, Math.Abs(amount), plugin.Localizer[reason]]}");
+                            ModuleUtils.K4_PrintToChat(k4player.Controller, $" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.points.loss", playerData.Points, Math.Abs(amount), plugin.Localizer[reason]]}");
                         }
                     }
                 }
@@ -154,7 +154,7 @@ namespace K4System
 
             if (playerData.Rank.Name != newRank.Name)
             {
-                k4player.Controller.PrintToChat($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer[playerData.Rank.Point > newRank.Point ? "k4.ranks.demote" : "k4.ranks.promote", newRank.Color, newRank.Name]}");
+                ModuleUtils.K4_PrintToChat(k4player.Controller, $" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer[playerData.Rank.Point > newRank.Point ? "k4.ranks.demote" : "k4.ranks.promote", newRank.Color, newRank.Name]}");
 
                 if (playerData.Rank.Permissions != null && playerData.Rank.Permissions.Count > 0)
                 {

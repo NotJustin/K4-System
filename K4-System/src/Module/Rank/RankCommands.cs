@@ -137,8 +137,8 @@ namespace K4System
 
 				Server.NextFrame(() =>
 				{
-					player!.PrintToChat($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.rank.title", k4player.PlayerName]}");
-					player.PrintToChat(plugin.Localizer["k4.ranks.rank.line1", playerData.Points, playerData.Rank.Color, playerData.Rank.Name, rankDictionary.Count - higherRanksCount, rankDictionary.Count]);
+					ModuleUtils.K4_PrintToChat(player!, $" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.rank.title", k4player.PlayerName]}");
+                    ModuleUtils.K4_PrintToChat(player!, plugin.Localizer["k4.ranks.rank.line1", playerData.Points, playerData.Rank.Color, playerData.Rank.Name, rankDictionary.Count - higherRanksCount, rankDictionary.Count]);
 
 					KeyValuePair<string, Rank> nextRankEntry = rankDictionary
 								.Where(kv => kv.Value.Point > playerData.Rank.Point)
@@ -149,11 +149,11 @@ namespace K4System
 					{
 						Rank nextRank = nextRankEntry.Value;
 
-						player.PrintToChat(plugin.Localizer["k4.ranks.rank.line2", nextRank.Color, nextRank.Name]);
-						player.PrintToChat(plugin.Localizer["k4.ranks.rank.line3", nextRank.Point - playerData.Points]);
+                        ModuleUtils.K4_PrintToChat(player!, plugin.Localizer["k4.ranks.rank.line2", nextRank.Color, nextRank.Name]);
+						ModuleUtils.K4_PrintToChat(player!, plugin.Localizer["k4.ranks.rank.line3", nextRank.Point - playerData.Points]);
 					}
 
-					player.PrintToChat(plugin.Localizer["k4.ranks.rank.line4", playerPlace, totalPlayers]);
+					ModuleUtils.K4_PrintToChat(player!, plugin.Localizer["k4.ranks.rank.line4", playerPlace, totalPlayers]);
 				});
 			});
 		}
@@ -220,12 +220,12 @@ namespace K4System
 
 							Rank rank = GetPlayerRank(points);
 
-							player!.PrintToChat($" {plugin.Localizer["k4.ranks.top.line", i + 1, rank.Color, rank.Name, name, points]}");
+                            ModuleUtils.K4_PrintToChat(player!, $" {plugin.Localizer["k4.ranks.top.line", i + 1, rank.Color, rank.Name, name, points]}");
 						}
 					}
 					else
 					{
-						player!.PrintToChat($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.top.notfound", printCount]}");
+                        ModuleUtils.K4_PrintToChat(player!, $" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.top.notfound", printCount]}");
 					}
 				});
 			});
@@ -305,7 +305,7 @@ namespace K4System
 				playerData.Points = 0;
 
 				if (playerName != "SERVER")
-					Server.PrintToChatAll($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.setpoints", target.PlayerName, parsedInt, playerName]}");
+					ModuleUtils.K4_PrintToChatAll($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.setpoints", target.PlayerName, parsedInt, playerName]}");
 
 				Task.Run(() => plugin.SavePlayerDataAsync(k4player, false));
 			}
@@ -363,7 +363,7 @@ namespace K4System
 				playerData.Points += parsedInt;
 
 				if (playerName != "SERVER")
-					Server.PrintToChatAll($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.givepoints", playerName, parsedInt, target.PlayerName]}");
+                    ModuleUtils.K4_PrintToChatAll($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.givepoints", playerName, parsedInt, target.PlayerName]}");
 
 				Task.Run(() => plugin.SavePlayerDataAsync(k4player, false));
 			}
@@ -421,7 +421,7 @@ namespace K4System
 				playerData.Points -= parsedInt;
 
 				if (playerName != "SERVER")
-					Server.PrintToChatAll($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.removepoints", playerName, parsedInt, target.PlayerName]}");
+					ModuleUtils.K4_PrintToChatAll($" {plugin.Localizer["k4.general.prefix"]} {plugin.Localizer["k4.ranks.removepoints", playerName, parsedInt, target.PlayerName]}");
 
 				Task.Run(() => plugin.SavePlayerDataAsync(k4player, false));
 			}
