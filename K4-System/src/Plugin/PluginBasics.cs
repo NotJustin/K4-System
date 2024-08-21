@@ -171,7 +171,7 @@ namespace K4System
 					if (!k4Player.IsValid || !k4Player.IsPlayer)
 						continue;
 
-					K4System.ModuleUtils.K4_PrintToChat(k4Player.Controller, $" {Localizer["k4.general.prefix"]} {ChatColors.Lime}{Localizer["k4.general.spawnmessage"]}");
+					k4Player.Controller.PrintToChat($" {Localizer["k4.general.prefix"]} {ChatColors.Lime}{Localizer["k4.general.spawnmessage"]}");
 				}
 
 				return HookResult.Continue;
@@ -263,7 +263,7 @@ namespace K4System
 				}
 			}
 
-			K4System.ModuleUtils.K4_PrintToChatAll($" {Localizer["k4.general.prefix"]} {Localizer["k4.ranks.resetmydata", player!.PlayerName]}");
+			Server.PrintToChatAll($" {Localizer["k4.general.prefix"]} {Localizer["k4.ranks.resetmydata", player!.PlayerName]}");
 
 			Task.Run(() => SavePlayerDataAsync(k4player, false));
 		}
@@ -352,7 +352,7 @@ namespace K4System
 				}
 
 				if (playerName != "SERVER")
-                    K4System.ModuleUtils.K4_PrintToChatAll($" {Localizer["k4.general.prefix"]} {Localizer["k4.ranks.resetdata", target.PlayerName, playerName]}");
+					Server.PrintToChatAll($" {Localizer["k4.general.prefix"]} {Localizer["k4.ranks.resetdata", target.PlayerName, playerName]}");
 
 				Task.Run(() => SavePlayerDataAsync(k4player, false));
 			}

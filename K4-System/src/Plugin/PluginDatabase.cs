@@ -574,7 +574,7 @@ public sealed partial class Plugin : BasePlugin
 					Server.NextWorldUpdate(() =>
 					{
 						if (result != null)
-							Server.NextWorldUpdate(() => K4System.ModuleUtils.K4_PrintToChatAll(result));
+							Server.NextWorldUpdate(() => Server.PrintToChatAll(result));
 					});
 				});
 			}
